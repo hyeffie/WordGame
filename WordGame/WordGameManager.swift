@@ -11,7 +11,9 @@ class WordGameManager {
   
   static let shared = WordGameManager.init()
   
-  private init() { }
+  private init() {
+    startGame()
+  }
   
   private static let words: [String] = "동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 삼천리".components(separatedBy: " ")
   
@@ -19,12 +21,13 @@ class WordGameManager {
   
   private var retiredWords: [String] = []
   
-  var latestWords: (String, String) {
-    (retiredWords.last ?? "", remainingWords.last ?? "")
-  }
+  var current: String { retiredWords.last ?? "" }
+  
+  var next: String { remainingWords.last ?? "" }
   
   func startGame() {
-    remainingWords.shuffle()
+    remainingWords = WordGameManager.words.shuffled()
+    retiredWords = []
     let firstWord = remainingWords.popLast() ?? ""
     retiredWords.append(firstWord)
   }

@@ -9,7 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
   
-  let gameManager = WordGameManager.shared
+  var gameManager = WordGameManager.shared
 
   @IBOutlet weak var currentWordLabel: UILabel!
   
@@ -19,9 +19,8 @@ class ViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    gameManager.startGame()
-    currentWordLabel.text = gameManager.latestWords.0
-    nextWordLabel.text = gameManager.latestWords.1
+    currentWordLabel.text = gameManager.current
+    nextWordLabel.text = gameManager.next
   }
 
   @IBAction func startEditing(_ sender: Any) {
@@ -40,7 +39,7 @@ class ViewController: UIViewController {
   }
   
   func compareWord(with inputText: String) {
-    if inputText == gameManager.latestWords.0 {
+    if inputText == gameManager.current {
       updateDataAndLabels()
     } else {
       currentWordLabel.textColor = .red
@@ -50,8 +49,8 @@ class ViewController: UIViewController {
   
   func updateDataAndLabels() {
     gameManager.goOntoNextStep()
-    currentWordLabel.text = gameManager.latestWords.0
-    nextWordLabel.text = gameManager.latestWords.1
+    currentWordLabel.text = gameManager.current
+    nextWordLabel.text = gameManager.next
     currentWordLabel.textColor = .black
   }
 }
