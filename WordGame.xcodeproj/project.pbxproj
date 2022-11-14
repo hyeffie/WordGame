@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F43D565C29224E220001B946 /* WordGameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43D565B29224E220001B946 /* WordGameManager.swift */; };
 		F488ABC229222D2B00173DDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F488ABC129222D2B00173DDB /* AppDelegate.swift */; };
 		F488ABC429222D2B00173DDB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F488ABC329222D2B00173DDB /* SceneDelegate.swift */; };
 		F488ABC629222D2B00173DDB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F488ABC529222D2B00173DDB /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F43D565B29224E220001B946 /* WordGameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordGameManager.swift; sourceTree = "<group>"; };
 		F488ABBE29222D2B00173DDB /* WordGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F488ABC129222D2B00173DDB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F488ABC329222D2B00173DDB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				F488ABCA29222D2C00173DDB /* Assets.xcassets */,
 				F488ABCC29222D2C00173DDB /* LaunchScreen.storyboard */,
 				F488ABCF29222D2C00173DDB /* Info.plist */,
+				F43D565B29224E220001B946 /* WordGameManager.swift */,
 			);
 			path = WordGame;
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 				F488ABC629222D2B00173DDB /* ViewController.swift in Sources */,
 				F488ABC229222D2B00173DDB /* AppDelegate.swift in Sources */,
 				F488ABC429222D2B00173DDB /* SceneDelegate.swift in Sources */,
+				F43D565C29224E220001B946 /* WordGameManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

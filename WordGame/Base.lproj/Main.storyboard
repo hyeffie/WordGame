@@ -41,7 +41,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="확인"/>
                                         <connections>
-                                            <action selector="compareWords:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1QL-bn-djp"/>
+                                            <action selector="compare:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kr5-0R-aWM"/>
                                         </connections>
                                     </button>
                                 </subviews>

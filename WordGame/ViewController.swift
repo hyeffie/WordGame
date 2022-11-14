@@ -9,9 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
   
-  var words = "동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 삼천리".components(separatedBy: " ")
-  
-  var winCount: Int = 0
+  let gameManager = WordGameManager.shared
 
   @IBOutlet weak var currentWordLabel: UILabel!
   
@@ -21,10 +19,9 @@ class ViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    words.shuffle()
-    
-    currentWordLabel.text = words[winCount]
-    nextWordLabel.text = words[winCount + 1]
+    gameManager.startGame()
+    currentWordLabel.text = gameManager.latestWords.0
+    nextWordLabel.text = gameManager.latestWords.1
   }
 
   @IBAction func startEditing(_ sender: Any) {
@@ -33,29 +30,28 @@ class ViewController: UIViewController {
     }
   }
   
-  @IBAction func compareWords(_ sender: Any) {
-    guard let input = typedWordTextField.text,
-          winCount < words.count else { return }
-    
-    let typedWord = input.trimmingCharacters(in: .whitespacesAndNewlines)
-    let currentWord = words[winCount]
-    
-    if typedWord == currentWord {
-      winCount += 1
-      updateWords(with: winCount)
-      currentWordLabel.textColor = .black
+  @IBAction func compare(_ sender: Any) {
+    guard let input = typedWordTextField.text else { return }
+    compareWord(with: input.trimmingCharacters(in: .whitespacesAndNewlines))
+  }
+  
+  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    typedWordTextField.endEditing(true)
+  }
+  
+  func compareWord(with inputText: String) {
+    if inputText == gameManager.latestWords.0 {
+      updateDataAndLabels()
     } else {
       currentWordLabel.textColor = .red
     }
     typedWordTextField.text = ""
   }
   
-  func updateWords(with nextIndex: Int) {
-    currentWordLabel.text = nextWordLabel.text
-    nextWordLabel.text = nextIndex + 1 < words.count ? words[nextIndex + 1] : ""
-  }
-  
-  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-    typedWordTextField.endEditing(true)
+  func updateDataAndLabels() {
+    gameManager.goOntoNextStep()
+    currentWordLabel.text = gameManager.latestWords.0
+    nextWordLabel.text = gameManager.latestWords.1
+    currentWordLabel.textColor = .black
   }
 }
