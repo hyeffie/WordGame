@@ -21,11 +21,20 @@ class WordGame {
     remainingWords.count < 2 ? "" : remainingWords[remainingWords.count - 2]
   }
   
+  private func goOntoNextStep() {
+    let _ = remainingWords.popLast()
+  }
+  
   func resetGame() {
     remainingWords = WordGame.words.shuffled()
   }
   
-  func goOntoNextStep() {
-    let _ = remainingWords.popLast()
+  func compareAndUpdate(with text: String) -> Bool {
+    if text == current {
+      goOntoNextStep()
+      return true
+    } else {
+      return false
+    }
   }
 }

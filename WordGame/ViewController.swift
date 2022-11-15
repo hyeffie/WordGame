@@ -31,26 +31,21 @@ class ViewController: UIViewController {
   
   @IBAction func compare(_ sender: Any) {
     guard let input = typedWordTextField.text else { return }
-    compareWord(with: input.trimmingCharacters(in: .whitespacesAndNewlines))
+    compareAndUpdate(with: input.trimmingCharacters(in: .whitespacesAndNewlines))
   }
   
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     typedWordTextField.endEditing(true)
   }
   
-  func compareWord(with inputText: String) {
-    if inputText == game.current {
-      updateDataAndLabels()
+  func compareAndUpdate(with text: String) {
+    if game.compareAndUpdate(with: text) {
+      currentWordLabel.text = game.current
+      nextWordLabel.text = game.next
+      currentWordLabel.textColor = .black
     } else {
       currentWordLabel.textColor = .red
     }
     typedWordTextField.text = ""
-  }
-  
-  func updateDataAndLabels() {
-    game.goOntoNextStep()
-    currentWordLabel.text = game.current
-    nextWordLabel.text = game.next
-    currentWordLabel.textColor = .black
   }
 }
